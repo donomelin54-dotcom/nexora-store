@@ -1,0 +1,710 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>NEXORA | Innovación en movimiento</title>
+  <meta name="description" content="Descubre tecnología y artículos deportivos en NEXORA. Innovación en movimiento.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --dark: #101827;
+      --blue: #246BFD;
+      --ice: #F3F6FA;
+      --white: #FFFFFF;
+      --gray: #697386;
+      --border: #E5EAF1;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: var(--white);
+    }
+
+    button, a { font: inherit; }
+    a { text-decoration: none; color: inherit; }
+
+    .announcement {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      letter-spacing: .5px;
+    }
+
+    header {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 27px;
+      letter-spacing: 3px;
+    }
+
+    .logo span { color: var(--blue); }
+
+    nav {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    nav a:hover { color: var(--blue); }
+
+    .cart-button {
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 11px 17px;
+      background: white;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .cart-button span {
+      background: var(--blue);
+      color: white;
+      border-radius: 50%;
+      padding: 3px 7px;
+      margin-left: 5px;
+    }
+
+    .hero {
+      background: var(--dark);
+      color: white;
+      padding: 95px 8%;
+      min-height: 490px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      right: -90px;
+      top: 30px;
+      background: radial-gradient(circle, rgba(36,107,253,.38), transparent 68%);
+    }
+
+    .hero-content {
+      max-width: 660px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      color: #78A4FF;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 23px;
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(43px, 6vw, 72px);
+      line-height: 1.08;
+      letter-spacing: -3px;
+      margin-bottom: 24px;
+    }
+
+    h1 span { color: #5D91FF; }
+
+    .hero p {
+      color: #C3CDDC;
+      font-size: 16px;
+      line-height: 1.8;
+      max-width: 490px;
+      margin-bottom: 34px;
+    }
+
+    .primary-button {
+      display: inline-block;
+      background: var(--blue);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 5px;
+      font-size: 13px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .primary-button:hover {
+      background: #1454D6;
+      transform: translateY(-2px);
+    }
+
+    .categories {
+      padding: 75px 7%;
+      background: var(--ice);
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-heading h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .category-card {
+      min-height: 260px;
+      padding: 35px;
+      border-radius: 9px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tech-card {
+      background: linear-gradient(130deg, #101827, #2456A6);
+    }
+
+    .sport-card {
+      background: linear-gradient(130deg, #152C35, #267E79);
+    }
+
+    .category-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 27px;
+      margin-bottom: 10px;
+    }
+
+    .category-card p {
+      color: #E1E8F2;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .category-card a {
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      width: fit-content;
+      border-bottom: 1px solid white;
+      padding-bottom: 5px;
+    }
+
+    .products {
+      padding: 85px 7%;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .product-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: .25s;
+      background: white;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(16,24,39,.08);
+    }
+
+    .product-image {
+      height: 190px;
+      background: var(--ice);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 65px;
+    }
+
+    .product-info { padding: 19px; }
+
+    .product-category {
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .product-info h3 {
+      font-size: 15px;
+      margin: 10px 0;
+    }
+
+    .product-description {
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.6;
+      min-height: 38px;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 19px;
+    }
+
+    .price {
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .add-button {
+      border: none;
+      background: var(--dark);
+      color: white;
+      padding: 10px 13px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .add-button:hover { background: var(--blue); }
+
+    .benefits {
+      background: var(--ice);
+      padding: 55px 7%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      text-align: center;
+    }
+
+    .benefit-icon { font-size: 28px; margin-bottom: 13px; }
+
+    .benefits h3 { font-size: 14px; margin-bottom: 9px; }
+
+    .benefits p {
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 50px 7% 25px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+      padding-bottom: 35px;
+    }
+
+    footer p {
+      color: #AEB9C9;
+      font-size: 12px;
+      line-height: 1.8;
+      margin-top: 12px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #344052;
+      padding-top: 20px;
+      color: #AEB9C9;
+      font-size: 11px;
+    }
+
+    .cart-panel {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      background: rgba(0,0,0,.5);
+      justify-content: flex-end;
+    }
+
+    .cart-panel.open { display: flex; }
+
+    .cart-content {
+      width: min(420px, 100%);
+      background: white;
+      height: 100%;
+      padding: 28px;
+      overflow-y: auto;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .cart-header h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 21px;
+    }
+
+    .close-cart {
+      border: none;
+      background: none;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 12px;
+      font-size: 13px;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      margin: 25px 0;
+      font-weight: 800;
+    }
+
+    .checkout-button { width: 100%; }
+
+    .empty-cart {
+      color: var(--gray);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .demo-note {
+      font-size: 11px;
+      color: var(--gray);
+      margin-top: 15px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 850px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      header { padding: 0 5%; }
+      nav { gap: 15px; }
+    }
+
+    @media (max-width: 600px) {
+      header { height: auto; min-height: 70px; flex-wrap: wrap; gap: 12px; padding: 15px 5%; }
+      nav { order: 3; width: 100%; justify-content: center; font-size: 11px; gap: 20px; }
+      .logo { font-size: 23px; }
+      .hero { padding: 75px 7%; min-height: 420px; }
+      .category-grid { grid-template-columns: 1fr; }
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .product-image { height: 145px; font-size: 48px; }
+      .product-info { padding: 12px; }
+      .product-info h3 { font-size: 13px; }
+      .price { font-size: 14px; }
+      .add-button { padding: 9px; font-size: 10px; }
+      .benefits { grid-template-columns: 1fr; }
+      .section-heading h2 { font-size: 25px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    NEXORA · INNOVACIÓN EN MOVIMIENTO
+  </div>
+
+  <header>
+    <a class="logo" href="#">NEXORA<span>.</span></a>
+
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#tech">Tecnología</a>
+      <a href="#sport">Deportes</a>
+      <a href="#productos">Productos</a>
+    </nav>
+
+    <button class="cart-button" onclick="toggleCart()">
+      Bolsa <span id="cart-count">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <div class="eyebrow">Descubre NEXORA</div>
+        <h1>El futuro se mueve <span>contigo.</span></h1>
+        <p>
+          Tecnología, innovación y rendimiento en un solo lugar.
+          Descubre productos pensados para acompañar tu estilo de vida.
+        </p>
+        <a href="#productos" class="primary-button">EXPLORAR COLECCIÓN →</a>
+      </div>
+    </section>
+
+    <section class="categories" id="categorias">
+      <div class="section-heading">
+        <h2>Explora nuestras categorías</h2>
+        <p>Encuentra lo que necesitas para tu día a día.</p>
+      </div>
+
+      <div class="category-grid">
+        <article class="category-card tech-card" id="tech">
+          <h3>NEXORA TECH</h3>
+          <p>Conectividad, accesorios y tecnología para tu vida.</p>
+          <a href="#productos">EXPLORAR TECNOLOGÍA →</a>
+        </article>
+
+        <article class="category-card sport-card" id="sport">
+          <h3>NEXORA SPORT</h3>
+          <p>Equipamiento y accesorios para mantenerte en movimiento.</p>
+          <a href="#productos">EXPLORAR DEPORTES →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="products" id="productos">
+      <div class="section-heading">
+        <div class="eyebrow">Selección NEXORA</div>
+        <h2>Productos destacados</h2>
+        <p>Una primera muestra de nuestro catálogo.</p>
+      </div>
+
+      <div class="product-grid">
+
+        <article class="product-card">
+          <div class="product-image">🎧</div>
+          <div class="product-info">
+            <div class="product-category">NEXORA TECH</div>
+            <h3>Auriculares inalámbricos</h3>
+            <p class="product-description">Libertad y comodidad para escuchar tu música.</p>
+            <div class="product-bottom">
+              <span class="price">$599 MXN</span>
+              <button class="add-button" onclick="addToCart('Auriculares inalámbricos',599)">AGREGAR</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">⌚</div>
+          <div class="product-info">
+            <div class="product-category">NEXORA TECH</div>
+            <h3>Smartwatch deportivo</h3>
+            <p class="product-description">Un accesorio para acompañar tu actividad diaria.</p>
+            <div class="product-bottom">
+              <span class="price">$899 MXN</span>
+              <button class="add-button" onclick="addToCart('Smartwatch deportivo',899)">AGREGAR</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">🏋️</div>
+          <div class="product-info">
+            <div class="product-category">NEXORA SPORT</div>
+            <h3>Bandas de resistencia</h3>
+            <p class="product-description">Accesorios prácticos para tus entrenamientos.</p>
+            <div class="product-bottom">
+              <span class="price">$349 MXN</span>
+              <button class="add-button" onclick="addToCart('Bandas de resistencia',349)">AGREGAR</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">🎒</div>
+          <div class="product-info">
+            <div class="product-category">NEXORA SPORT</div>
+            <h3>Mochila deportiva</h3>
+            <p class="product-description">Espacio y comodidad para tus actividades.</p>
+            <div class="product-bottom">
+              <span class="price">$699 MXN</span>
+              <button class="add-button" onclick="addToCart('Mochila deportiva',699)">AGREGAR</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="benefits">
+      <div>
+        <div class="benefit-icon">📦</div>
+        <h3>Envíos en México</h3>
+        <p>Estamos preparando nuestra cobertura nacional.</p>
+      </div>
+      <div>
+        <div class="benefit-icon">🔒</div>
+        <h3>Compra segura</h3>
+        <p>Próximamente habilitaremos los pagos en línea.</p>
+      </div>
+      <div>
+        <div class="benefit-icon">💬</div>
+        <h3>Atención al cliente</h3>
+        <p>Estamos preparando nuestros canales de atención.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div>
+        <a class="logo" href="#">NEXORA<span>.</span></a>
+        <p>Innovación en movimiento.</p>
+      </div>
+      <div>
+        <strong>Explora</strong>
+        <p><a href="#tech">NEXORA TECH</a></p>
+        <p><a href="#sport">NEXORA SPORT</a></p>
+        <p><a href="#productos">Productos</a></p>
+      </div>
+      <div>
+        <strong>Información</strong>
+        <p>Envíos y devoluciones: próximamente</p>
+        <p>Contacto: próximamente</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 NEXORA. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <div class="cart-panel" id="cart-panel" onclick="outsideCart(event)">
+    <div class="cart-content">
+      <div class="cart-header">
+        <h2>Tu bolsa</h2>
+        <button class="close-cart" onclick="toggleCart()">×</button>
+      </div>
+
+      <div id="cart-items">
+        <p class="empty-cart">Tu bolsa está vacía.</p>
+      </div>
+
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cart-total">$0 MXN</span>
+      </div>
+
+      <button class="primary-button checkout-button" onclick="demoCheckout()">
+        CONTINUAR
+      </button>
+
+      <p class="demo-note">
+        Esta es una demostración. Los pagos y pedidos todavía no están habilitados.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+
+    function addToCart(name, price) {
+      const existing = cart.find(item => item.name === name);
+
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+
+      renderCart();
+      document.getElementById('cart-panel').classList.add('open');
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cart-items');
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+      document.getElementById('cart-count').textContent = count;
+      document.getElementById('cart-total').textContent =
+        '$' + total.toLocaleString('es-MX') + ' MXN';
+
+      if (cart.length === 0) {
+        container.innerHTML = '<p class="empty-cart">Tu bolsa está vacía.</p>';
+        return;
+      }
+
+      container.innerHTML = cart.map((item, index) => `
+        <div class="cart-item">
+          <div>
+            <strong>${item.name}</strong><br>
+            ${item.quantity} × $${item.price.toLocaleString('es-MX')} MXN
+          </div>
+          <button onclick="removeItem(${index})">Eliminar</button>
+        </div>
+      `).join('');
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function toggleCart() {
+      document.getElementById('cart-panel').classList.toggle('open');
+    }
+
+    function outsideCart(event) {
+      if (event.target.id === 'cart-panel') {
+        toggleCart();
+      }
+    }
+
+    function demoCheckout() {
+      alert('Gracias por visitar NEXORA. El sistema de pagos todavía está en preparación. Esta demostración no genera pedidos ni realiza cobros.');
+    }
+  </script>
+
+</body>
+</html>
